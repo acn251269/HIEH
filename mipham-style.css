@@ -32,9 +32,14 @@ nav ul li a { font-weight: bold; }
 }
 
 /* New Banner (sẽ chuyển slider sau này) */
-.sub-banner { margin: 40px 20px; position: relative; }
-.sub-banner img { width: 100%; height: 300px; display: block; object-fit: cover; }
+ .sub-banner {
+      margin: 40px 0; position: relative; width: 100%; height: 300px; overflow: hidden; }
 
+    .sub-banner img { width: 100%; height: 300px; object-fit: cover; position: absolute; top: 0; left: 0;  opacity: 0;  transition: opacity 1s ease-in-out;
+    }
+    .sub-banner img.active {
+      opacity: 1;
+    }
 /* Sections */
 section { padding: 40px 0; }
 section h2 { text-align: center; margin-bottom: 20px; font-size: 1.8em; }
@@ -200,5 +205,60 @@ section h2 { text-align: center; margin-bottom: 20px; font-size: 1.8em; }
 .news-item h3 { margin: 10px 0; font-size: 1.1em; }
 .news-item p { font-size: 0.9em; line-height: 1.4; }
 
+
+.dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+    .dropdown-content a .thumbnail {
+      position: absolute;
+      top: 50%;
+      left: 110%; /* Đẩy ra ngoài menu */
+      width: 100px;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(-10px); 
+      transition: opacity 0.3s ease, transform 0.3s ease; 
+    }
+
+    .dropdown-content a:hover .thumbnail {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
 /* Footer */
 footer { background: #333; color: #fff; text-align: center; padding: 20px 0; margin: 40px 0 0; } 
+
+ .featured-products { position: relative; overflow: hidden; }
+ .slider-btn { position: absolute; top: 50%; transform: translateY(-10%); background: rgba(0,0,0,0.1); color: white; border: none; padding: 10px; cursor: pointer; z-index: 10; }
+    .prev-btn { left: 0; }
+    .next-btn { right: 0; }
+.slider-container { display: flex; transition: transform 0.5s ease-in-out; }
